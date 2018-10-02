@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>SecApp-Buscar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(e) {
+
+            $('#submit').click(function(e) {
+
+                if($('#busqueda').val()== "Vendor") {
+                var uri = "https://cve.circl.lu/api/browse";
+                uri +=  "/" + $('#texto').val();
+                $.ajax({
+                    url: uri,
+                    success: function(data) {
+                        $('.resp').append(JSON.stringify(data));
+                    }
+
+                },'json');
+                } else if ($('#busqueda').val() == "cweid") {
+
+                var uri = "https://cve.circl.lu/api/capec";
+                uri +=  "/" + $('#texto').val();
+                $.ajax({
+                    url: uri,
+                    success: function(data) {
+                        $('.resp').append(JSON.stringify(data));
+                    }
+
+                },'json');
+                } else {
+                
+                var uri = "https://cve.circl.lu/api/cve";
+                uri +=  "/" + $('#texto').val();
+                $.ajax({
+                    url: uri,
+                    success: function(data) {
+                        console.log(data.summary);
+                        //$('.resp').append(data.solutions);
+                        //$('.resp').append(data.summary);
+                        $('.resp').append(data.name);
+                    }
+                        
+                },'json');
+                
+
+                } 
+                
+               
+                localStorage.setItem("Texto",$('#texto').val());
+                var texto = localStorage.getItem("Texto");
+                $('.historial').append(texto+"<br>");
+                
+               
+                
+                });
+                
+
+            
+            });
+
+
+    </script>
+
+</head>
+
+<body>
+    <div>
+        <span>Ingrese la informacion a buscar</span>
+    </div>
+    <div>
+        <input type="text" id="texto" name="buscar" />
+        <select class="" name="busqueda" id="busqueda">
+            <option id="cwe" value="cweid">CWEID</option>
+            <option id="vendor" value="Vendor">Vendor</option>
+            <option id="cve" value="cve">CVE</option>
+        </select>
+        <input type="button" value="Buscar" id="submit" />
+    </div>
+    <div class="resp">
+
+    </div>
+    <div>
+        <h4>Ultimas busquedas</h4>
+        <div class="historial">
+    
+        </div>
+    </div>
+    <div>
+        <footer>
+            <p>Leandro Estrella 2018</p>
+        </footer>
+    </div>
+</body>
+
+</html>

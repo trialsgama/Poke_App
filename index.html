@@ -1,0 +1,43 @@
+<!Doctype <!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>SecApp</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="index.css" />
+    <script src="main.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+
+            $('#buscar').click(function(e) {
+
+                window.location.href='buscar.html';
+
+            });
+
+            $('#cargar').click(function(e) {
+
+                 window.location.href='cargar.html';
+            })
+
+        });
+    </script>
+</head>
+
+<body>
+    <div>
+        <p>Bienvenidos a la app de seguridad informatica</p>
+        <p>Por favor, seleccione una de las funcionalidades</p>
+    </div>
+    <div class="boton">
+        <input type="button" id="buscar" value="buscar exploits">
+    </div>
+    <div class="boton">
+        <input type="button" id="cargar" value="Cargar archivos">
+    </div>
+</body>
+
+</html>
