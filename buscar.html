@@ -7,7 +7,7 @@
     <title>SecApp-Buscar</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
@@ -15,9 +15,9 @@
 
             $('#submit').click(function(e) {
 
-                if($('#busqueda').val()== "Vendor") {
-                var uri = "https://cve.circl.lu/api/browse";
-                uri +=  "/" + $('#texto').val();
+                if($('#busqueda').val()== "id") {
+                var uri = "https://pokeapi.co/api/v2/pokemon/";
+                uri +=  $('#texto').val() + "/";
                 $.ajax({
                     url: uri,
                     success: function(data) {
@@ -25,10 +25,11 @@
                     }
 
                 },'json');
-                } else if ($('#busqueda').val() == "cweid") {
+                } else if ($('#busqueda').val() == "nombre") {
 
-                var uri = "https://cve.circl.lu/api/capec";
-                uri +=  "/" + $('#texto').val();
+                var uri = "https://pokeapi.co/api/v2/pokemon/";
+                uri +=  $('#texto').val() + "/";
+                console.log(uri);
                 $.ajax({
                     url: uri,
                     success: function(data) {
@@ -38,19 +39,51 @@
                 },'json');
                 } else {
                 
-                var uri = "https://cve.circl.lu/api/cve";
-                uri +=  "/" + $('#texto').val();
+                var uri = "https://pokeapi.co/api/v2/type/";
+                if ($('#texto').val()=="tierra") {
+                uri +=  "5/";
                 $.ajax({
                     url: uri,
                     success: function(data) {
-                        console.log(data.summary);
-                        //$('.resp').append(data.solutions);
-                        //$('.resp').append(data.summary);
-                        $('.resp').append(data.name);
+                        $('.resp').append(JSON.stringify(data));
                     }
                         
                 },'json');
+                }
                 
+                if ($('#texto').val()=="agua") {
+                uri +=  "11/";
+                $.ajax({
+                    url: uri,
+                    success: function(data) {
+                        $('.resp').append(JSON.stringify(data));
+                    }
+                        
+                },'json');
+                }
+
+                if ($('#texto').val()=="fuego") {
+                uri +=  "10/";
+                $.ajax({
+                    url: uri,
+                    success: function(data) {
+                        $('.resp').append(JSON.stringify(data));
+                    }
+                        
+                },'json');
+                }
+
+                if ($('#texto').val()=="aire") {
+                uri +=  "3/";
+                $.ajax({
+                    url: uri,
+                    success: function(data) {
+                        $('.resp').append(JSON.stringify(data));
+                    }
+                        
+                },'json');
+                }
+
 
                 } 
                 
@@ -73,15 +106,15 @@
 </head>
 
 <body>
-    <div>
+    <div class="header">
         <span>Ingrese la informacion a buscar</span>
     </div>
-    <div>
+    <div class="formulario">
         <input type="text" id="texto" name="buscar" />
         <select class="" name="busqueda" id="busqueda">
-            <option id="cwe" value="cweid">CWEID</option>
-            <option id="vendor" value="Vendor">Vendor</option>
-            <option id="cve" value="cve">CVE</option>
+            <option id="id" value="id">ID de pokemon</option>
+            <option id="tipo" value="tipo">Tipo</option>
+            <option id="nombre" value="nombre">nombre</option>
         </select>
         <input type="button" value="Buscar" id="submit" />
     </div>
