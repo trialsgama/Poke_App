@@ -26,7 +26,11 @@
                             $('.resp').append("Nombre de pokemon: " + resultado.name + "<br>");
                             $('.resp').append("Altura: " + resultado.height + "<br>");
                             $('.resp').append("Peso: " + resultado.weight + "<br>");
-                            $('.resp').append(resultado.sprites.front_default);
+                            image = new Image();
+                            image.src = resultado.sprites.front_default;
+                            image.onload = function() {
+                                $('.resp').append(image);
+                            };
 
                         }
 
@@ -50,7 +54,11 @@
                             }
                             $('.resp').append("Altura: " + resultado.height + "<br>");
                             $('.resp').append("Peso: " + resultado.weight + "<br>");
-                            $('.resp').append(resultado.sprites.front_default);
+                            image = new Image();
+                            image.src = resultado.sprites.front_default;
+                            image.onload = function() {
+                                $('.resp').append(image);
+                            };
 
                         }
 
@@ -79,6 +87,17 @@
                                 $('.resp').append("Son pokemons de este tipo:<br>");
                                 for (j = 0; j < 10; j++) {
                                     $('.resp').append(resultado.pokemon[j].pokemon.name + "<br>");
+                                    $.ajax({
+                                        url: resultado.pokemon[j].pokemon.url,
+                                        success: function(info) {
+                                            let imagen_pokemon = info;
+                                            image = new Image();
+                                            image.src = imagen_pokemon.sprites.front_default;
+                                            image.onload = function() {
+                                                $('.resp').append(image);
+                                            };
+                                        }
+                                    });
                                 }
                             }
 
@@ -106,6 +125,17 @@
                                 $('.resp').append("Son pokemons de este tipo:<br>");
                                 for (j = 0; j < 10; j++) {
                                     $('.resp').append(resultado.pokemon[j].pokemon.name + "<br>");
+                                    $.ajax({
+                                        url: resultado.pokemon[j].pokemon.url,
+                                        success: function(info) {
+                                            let imagen_pokemon = info;
+                                            image = new Image();
+                                            image.src = imagen_pokemon.sprites.front_default;
+                                            image.onload = function() {
+                                                $('.resp').append(image);
+                                            };
+                                        }
+                                    });
                                 }
                             }
 
@@ -133,6 +163,17 @@
                                 $('.resp').append("Son pokemons de este tipo:<br>");
                                 for (j = 0; j < 10; j++) {
                                     $('.resp').append(resultado.pokemon[j].pokemon.name + "<br>");
+                                    $.ajax({
+                                        url: resultado.pokemon[j].pokemon.url,
+                                        success: function(info) {
+                                            let imagen_pokemon = info;
+                                            image = new Image();
+                                            image.src = imagen_pokemon.sprites.front_default;
+                                            image.onload = function() {
+                                                $('.resp').append(image);
+                                            };
+                                        }
+                                    });
                                 }
                             }
 
@@ -160,6 +201,17 @@
                                 $('.resp').append("Son pokemons de este tipo:<br>");
                                 for (j = 1; j < 10; j++) {
                                     $('.resp').append(resultado.pokemon[j].pokemon.name + "<br>");
+                                    $.ajax({
+                                        url: resultado.pokemon[j].pokemon.url,
+                                        success: function(info) {
+                                            let imagen_pokemon = info;
+                                            image = new Image();
+                                            image.src = imagen_pokemon.sprites.front_default;
+                                            image.onload = function() {
+                                                $('.resp').append(image);
+                                            };
+                                        }
+                                    });
 
                                 }
                             }
