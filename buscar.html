@@ -90,7 +90,7 @@
                                     $.ajax({
                                         url: resultado.pokemon[j].pokemon.url,
                                         success: function(info) {
-                                            let imagen_pokemon = info;
+                                            var imagen_pokemon = info;
                                             image = new Image();
                                             image.src = imagen_pokemon.sprites.front_default;
                                             image.onload = function() {
@@ -128,7 +128,7 @@
                                     $.ajax({
                                         url: resultado.pokemon[j].pokemon.url,
                                         success: function(info) {
-                                            let imagen_pokemon = info;
+                                            var imagen_pokemon = info;
                                             image = new Image();
                                             image.src = imagen_pokemon.sprites.front_default;
                                             image.onload = function() {
@@ -166,7 +166,7 @@
                                     $.ajax({
                                         url: resultado.pokemon[j].pokemon.url,
                                         success: function(info) {
-                                            let imagen_pokemon = info;
+                                            var imagen_pokemon = info;
                                             image = new Image();
                                             image.src = imagen_pokemon.sprites.front_default;
                                             image.onload = function() {
@@ -204,7 +204,7 @@
                                     $.ajax({
                                         url: resultado.pokemon[j].pokemon.url,
                                         success: function(info) {
-                                            let imagen_pokemon = info;
+                                            var imagen_pokemon = info;
                                             image = new Image();
                                             image.src = imagen_pokemon.sprites.front_default;
                                             image.onload = function() {
@@ -254,8 +254,8 @@
     <div class="resp">
 
     </div>
-    <div>
-        <h4>Ultimas busquedas</h4>
+    <div class="historical">
+        <input type="button" value="Ver historial de busqueda" id="boton_busqueda" />>
         <div class="historial">
 
         </div>
