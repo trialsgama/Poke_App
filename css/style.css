@@ -76,8 +76,7 @@ table {
     margin: 1%;
 }
 
-input,
-.historical {
+div.historical {
     float: center;
 }
 
@@ -152,6 +151,10 @@ button {
 
 button[name='consultar'] {
     margin-top: 5%;
+}
+
+button[name='busq'] {
+    float: center;
 }
 
 #reintentar {

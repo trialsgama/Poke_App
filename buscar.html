@@ -93,9 +93,7 @@
                                             var imagen_pokemon = info;
                                             image = new Image();
                                             image.src = imagen_pokemon.sprites.front_default;
-                                            image.onload = function() {
-                                                $('.resp').append(image);
-                                            };
+                                            $('.resp').append(image);
                                         }
                                     });
                                 }
@@ -131,9 +129,7 @@
                                             var imagen_pokemon = info;
                                             image = new Image();
                                             image.src = imagen_pokemon.sprites.front_default;
-                                            image.onload = function() {
-                                                $('.resp').append(image);
-                                            };
+                                            $('.resp').append(image);
                                         }
                                     });
                                 }
@@ -169,9 +165,7 @@
                                             var imagen_pokemon = info;
                                             image = new Image();
                                             image.src = imagen_pokemon.sprites.front_default;
-                                            image.onload = function() {
-                                                $('.resp').append(image);
-                                            };
+                                            $('.resp').append(image);
                                         }
                                     });
                                 }
@@ -207,9 +201,7 @@
                                             var imagen_pokemon = info;
                                             image = new Image();
                                             image.src = imagen_pokemon.sprites.front_default;
-                                            image.onload = function() {
-                                                $('.resp').append(image);
-                                            };
+                                            $('.resp').append(image);
                                         }
                                     });
 
@@ -222,11 +214,14 @@
 
                 }
 
-
+                $('.historial').hide();
                 localStorage.setItem("Texto", $('#texto').val());
                 var texto = localStorage.getItem("Texto");
                 $('.historial').append(texto + "<br>");
 
+                $('#boton_busqueda').click(function(e) {
+                    $('.historial').show();
+                });
 
 
             });
@@ -255,7 +250,7 @@
 
     </div>
     <div class="historical">
-        <input type="button" value="Ver historial de busqueda" id="boton_busqueda" />>
+        <input type="button" value="Ver historial de busqueda" id="boton_busqueda" name="busq" />>
         <div class="historial">
 
         </div>
