@@ -263,12 +263,25 @@
                 });
 
 
+                //var input = '<input type="hidden" name="nasa_id" value="' + nasa_id + '">'
+                var boton2 = '<button class="btncompartir" type="submit">Compartir</button>';
+                //var form = '<form action="compartir.html" method="get">' + boton + '</form>';
+                $(boton2).appendTo('.historical');
+                $('.btncompartir').click(function(e) {
+
+                        window.location.href = 'compartir.html';
+
+                    })
+                    //$(form).appendTo('.resp');
+
+
 
             });
 
             $('#contacto').click(function(e) {
                 window.location.href = 'contacto.html';
             });
+
 
 
 
@@ -296,6 +309,8 @@
         <div class="resp">
 
         </div>
+        <script type="text/javascript" src="js/script.js">
+        </script>
         <div class="historical">
 
 
@@ -313,6 +328,7 @@
             </div>
         </footer>
     </div>
+
 </body>
 
 </html>
