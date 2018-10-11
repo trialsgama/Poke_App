@@ -1,6 +1,6 @@
 body {
     margin: 0px;
-    background-color: #212121;
+    background-color: #cf2020;
     color: #212121;
     font-family: 'Open Sans', Roboto;
 }
@@ -8,8 +8,8 @@ body {
 .header {
     width: 100%;
     display: block;
-    background-color: #1976d2;
-    color: #fff;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
     text-align: center;
 }
 
@@ -76,14 +76,10 @@ table {
     margin: 1%;
 }
 
-div.historical {
-    float: center;
-}
-
 footer {
     margin-top: 0%;
-    background-color: #1976d2;
-    color: #fff;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
     text-align: center;
 }
 
@@ -135,14 +131,26 @@ div.historial {
     margin: 3%;
 }
 
-button {
+#boton_busqueda {
+    margin: 0 auto;
     font-family: 'Open Sans', Roboto;
-    padding: 3%;
+    padding: 2%;
     border-radius: 2px;
     border: 0px;
-    background-color: #1976d2;
-    color: #ffffff;
-    margin: 3%;
+    background-color: #ffffff;
+    color: #000000;
+    margin: 0%;
+}
+
+#enviar,
+button {
+    font-family: 'Open Sans', Roboto;
+    padding: 2%;
+    border-radius: 2px;
+    border: 0px;
+    background-color: #ffffff;
+    color: #000000;
+    margin: 0%;
 }
 
 .historial button {
@@ -169,6 +177,13 @@ button[name='busq'] {
     text-align: center;
 }
 
+div.poke {
+    display: inline-block;
+    text-align: center;
+    color: #ffffff;
+}
+
+div.historical,
 div.resp {
     text-align: center;
     color: #ffffff;

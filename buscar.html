@@ -15,6 +15,7 @@
 
             $('#submit').click(function(e) {
                 $('.resp').empty();
+                $('.historical').empty();
                 if ($('#busqueda').val() == "id") {
                     var uri = "https://pokeapi.co/api/v2/pokemon/";
                     uri += $('#texto').val() + "/";
@@ -46,7 +47,7 @@
                             var resultado = data;
                             $('.resp').append("Habilidades: <br> ");
                             for (i = 0; i < resultado.abilities.length; i++) {
-                                $('.resp').append(resultado.abilities[i].ability.name + "<br>");
+                                $('.resp').append((i + 1) + "-" + resultado.abilities[i].ability.name + "<br>");
                             }
                             $('.resp').append("Movimientos:<br>");
                             for (j = 0; j < 10; j++) {
@@ -74,19 +75,19 @@
                                 var resultado = data;
                                 $('.resp').append("Recibe doble daño de pokemons de tipo:<br>");
                                 for (i = 0; i < resultado.damage_relations.double_damage_from.length; i++) {
-                                    $('.resp').append(resultado.damage_relations.double_damage_from[i].name + "<br>");
+                                    $('.resp').append((i + 1) + "-" + resultado.damage_relations.double_damage_from[i].name + "<br>");
                                 }
                                 $('.resp').append("Causa doble daño de pokemons de tipo:<br>");
                                 for (i = 0; i < resultado.damage_relations.double_damage_from.length; i++) {
-                                    $('.resp').append(resultado.damage_relations.double_damage_to[i].name + "<br>");
+                                    $('.resp').append((i + 1) + "-" + resultado.damage_relations.double_damage_to[i].name + "<br>");
                                 }
                                 $('.resp').append("Movimientos:<br>");
                                 for (i = 0; i < 10; i++) {
-                                    $('.resp').append(resultado.moves[i].name + "<br>");
+                                    $('.resp').append((i + 1) + "-" + resultado.moves[i].name + "<br>");
                                 }
                                 $('.resp').append("Son pokemons de este tipo:<br>");
                                 for (j = 0; j < 10; j++) {
-                                    $('.resp').append(resultado.pokemon[j].pokemon.name + "<br>");
+                                    $('.resp').append((j + 1) + "-" + resultado.pokemon[j].pokemon.name + "<br>");
                                     $.ajax({
                                         url: resultado.pokemon[j].pokemon.url,
                                         success: function(info) {
@@ -94,9 +95,12 @@
                                             image = new Image();
                                             image.src = imagen_pokemon.sprites.front_default;
                                             $('.resp').append(image);
+
                                         }
                                     });
+
                                 }
+
                             }
 
                         }, 'json');
@@ -110,19 +114,19 @@
                                 var resultado = data;
                                 $('.resp').append("Recibe doble daño de pokemons de tipo:<br>");
                                 for (i = 0; i < resultado.damage_relations.double_damage_from.length; i++) {
-                                    $('.resp').append(resultado.damage_relations.double_damage_from[i].name + "<br>");
+                                    $('.resp').append((i + 1) + "-" + resultado.damage_relations.double_damage_from[i].name + "<br>");
                                 }
                                 $('.resp').append("Causa doble daño de pokemons de tipo:<br>");
                                 for (i = 0; i < resultado.damage_relations.double_damage_from.length; i++) {
-                                    $('.resp').append(resultado.damage_relations.double_damage_to[i].name + "<br>");
+                                    $('.resp').append((i + 1) + "-" + resultado.damage_relations.double_damage_to[i].name + "<br>");
                                 }
                                 $('.resp').append("Movimientos:<br>");
                                 for (i = 0; i < 10; i++) {
-                                    $('.resp').append(resultado.moves[i].name + "<br>");
+                                    $('.resp').append((i + 1) + "-" + resultado.moves[i].name + "<br>");
                                 }
                                 $('.resp').append("Son pokemons de este tipo:<br>");
                                 for (j = 0; j < 10; j++) {
-                                    $('.resp').append(resultado.pokemon[j].pokemon.name + "<br>");
+                                    $('.resp').append((j + 1) + "-" + resultado.pokemon[j].pokemon.name + "<br>");
                                     $.ajax({
                                         url: resultado.pokemon[j].pokemon.url,
                                         success: function(info) {
@@ -130,9 +134,12 @@
                                             image = new Image();
                                             image.src = imagen_pokemon.sprites.front_default;
                                             $('.resp').append(image);
+
                                         }
                                     });
+
                                 }
+
                             }
 
                         }, 'json');
@@ -146,19 +153,19 @@
                                 var resultado = data;
                                 $('.resp').append("Recibe doble daño de pokemons de tipo:<br>");
                                 for (i = 0; i < resultado.damage_relations.double_damage_from.length; i++) {
-                                    $('.resp').append(resultado.damage_relations.double_damage_from[i].name + "<br>");
+                                    $('.resp').append((i + 1) + "-" + resultado.damage_relations.double_damage_from[i].name + "<br>");
                                 }
                                 $('.resp').append("Causa doble daño de pokemons de tipo:<br>");
                                 for (i = 0; i < resultado.damage_relations.double_damage_from.length; i++) {
-                                    $('.resp').append(resultado.damage_relations.double_damage_to[i].name + "<br>");
+                                    $('.resp').append((i + 1) + "-" + resultado.damage_relations.double_damage_to[i].name + "<br>");
                                 }
                                 $('.resp').append("Movimientos:<br>");
                                 for (i = 0; i < 10; i++) {
-                                    $('.resp').append(resultado.moves[i].name + "<br>");
+                                    $('.resp').append((i + 1) + "-" + resultado.moves[i].name + "<br>");
                                 }
                                 $('.resp').append("Son pokemons de este tipo:<br>");
                                 for (j = 0; j < 10; j++) {
-                                    $('.resp').append(resultado.pokemon[j].pokemon.name + "<br>");
+                                    $('.resp').append((j + 1) + "-" + resultado.pokemon[j].pokemon.name + "<br>");
                                     $.ajax({
                                         url: resultado.pokemon[j].pokemon.url,
                                         success: function(info) {
@@ -166,9 +173,12 @@
                                             image = new Image();
                                             image.src = imagen_pokemon.sprites.front_default;
                                             $('.resp').append(image);
+
                                         }
                                     });
+
                                 }
+
                             }
 
                         }, 'json');
@@ -182,19 +192,19 @@
                                 var resultado = data;
                                 $('.resp').append("Recibe doble daño de pokemons de tipo:<br>");
                                 for (i = 0; i < resultado.damage_relations.double_damage_from.length; i++) {
-                                    $('.resp').append(resultado.damage_relations.double_damage_from[i].name + "<br>");
+                                    $('.resp').append((i + 1) + "-" + resultado.damage_relations.double_damage_from[i].name + "<br>");
                                 }
                                 $('.resp').append("Causa doble daño de pokemons de tipo:<br>");
                                 for (i = 0; i < resultado.damage_relations.double_damage_from.length; i++) {
-                                    $('.resp').append(resultado.damage_relations.double_damage_to[i].name + "<br>");
+                                    $('.resp').append((i + 1) + "-" + resultado.damage_relations.double_damage_to[i].name + "<br>");
                                 }
                                 $('.resp').append("Movimientos:<br>");
                                 for (i = 0; i < 10; i++) {
-                                    $('.resp').append(resultado.moves[i].name + "<br>");
+                                    $('.resp').append((i + 1) + "-" + resultado.moves[i].name + "<br>");
                                 }
                                 $('.resp').append("Son pokemons de este tipo:<br>");
-                                for (j = 1; j < 10; j++) {
-                                    $('.resp').append(resultado.pokemon[j].pokemon.name + "<br>");
+                                for (j = 0; j < 10; j++) {
+                                    $('.resp').append((j + 1) + "-" + resultado.pokemon[j].pokemon.name + "<br>");
                                     $.ajax({
                                         url: resultado.pokemon[j].pokemon.url,
                                         success: function(info) {
@@ -202,31 +212,42 @@
                                             image = new Image();
                                             image.src = imagen_pokemon.sprites.front_default;
                                             $('.resp').append(image);
+
                                         }
                                     });
 
                                 }
+
                             }
 
                         }, 'json');
+
+
+
                     }
 
 
                 }
 
+                var boton = '<button id="boton_busqueda" type="submit">Ver historial</button>';
+                $(boton).appendTo('.historical');
                 $('.historial').hide();
                 localStorage.setItem("Texto", $('#texto').val());
                 var texto = localStorage.getItem("Texto");
-                $('.historial').append(texto + "<br>");
+                $('.historial').append("<br>");
+                $('.historial').append($('#busqueda').val() + " = " + texto + "<br>");
 
                 $('#boton_busqueda').click(function(e) {
                     $('.historial').show();
                 });
 
 
+
             });
 
-
+            $('#contacto').click(function(e) {
+                window.location.href = 'contacto.html';
+            });
 
         });
     </script>
@@ -250,14 +271,19 @@
 
     </div>
     <div class="historical">
-        <input type="button" value="Ver historial de busqueda" id="boton_busqueda" name="busq" />>
-        <div class="historial">
 
-        </div>
+
     </div>
+    <div class="historial">
+
+    </div>
+
     <div>
         <footer>
-            <p>Leandro Estrella 2018</p>
+            <div class="foot">
+                <p>Leandro Estrella 2018</p>
+                <p id="contacto">Contacto</p>
+            </div>
         </footer>
     </div>
 </body>
