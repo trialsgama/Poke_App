@@ -217,10 +217,31 @@
                                     });
 
                                 }
+                                var boton_compartir = '<button id="boton_compartir" type="submit">Compartir</button>';
+                                $(boton_compartir).appendTo('.resp');
+                                $('#boton_compartir').click(function(e) {
+                                    var dats = $('.resp').val();
+                                    console.log(dats);
+                                    $.ajax({
+                                        type: "post",
+                                        url: "compartir.html",
 
+                                        data: dats,
+                                        success: function(dats) {
+                                            $('.resp').html(dats);
+                                            window.location.href = 'compartir.html';
+
+
+                                        },
+                                        error: function(XMLHttpRequest, textStatus, errorThrown) {
+                                            console.log(errorThrown);
+                                        }
+                                    }, 'json');
+                                });
                             }
 
                         }, 'json');
+
 
 
 
@@ -249,8 +270,12 @@
                 window.location.href = 'contacto.html';
             });
 
+
+
         });
     </script>
+
+
 
 </head>
 
@@ -258,24 +283,26 @@
     <div class="header">
         <span>Ingrese la informacion a buscar</span>
     </div>
-    <div class="formulario">
-        <input type="text" id="texto" name="buscar" />
-        <select class="" name="busqueda" id="busqueda">
+    <div class="form">
+        <div class="formulario">
+            <input type="text" id="texto" name="buscar" />
+            <select class="" name="busqueda" id="busqueda">
             <option id="id" value="id">ID de pokemon</option>
             <option id="tipo" value="tipo">Tipo</option>
             <option id="nombre" value="nombre">nombre</option>
         </select>
-        <input type="button" value="Buscar" id="submit" />
-    </div>
-    <div class="resp">
+            <input type="button" value="Buscar" id="submit" />
+        </div>
+        <div class="resp">
 
-    </div>
-    <div class="historical">
+        </div>
+        <div class="historical">
 
 
-    </div>
-    <div class="historial">
+        </div>
+        <div class="historial">
 
+        </div>
     </div>
 
     <div>
