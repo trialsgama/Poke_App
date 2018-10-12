@@ -27,11 +27,16 @@
                             $('.resp').append("Nombre de pokemon: " + resultado.name + "<br>");
                             $('.resp').append("Altura: " + resultado.height + "<br>");
                             $('.resp').append("Peso: " + resultado.weight + "<br>");
-                            image = new Image();
-                            image.src = resultado.sprites.front_default;
-                            image.onload = function() {
-                                $('.resp').append(image);
-                            };
+                            image = $('<img>', {
+                                src: resultado.sprites.front_default,
+                                click: function() {
+                                    window.location.href = 'compartir.html?id=' + resultado.id;
+
+                                }
+                            });
+
+                            $('.resp').append(image);
+                            $('.resp').append("<h3>Para compartir haga click sobre la imagen del pokemon </h3>");
 
                         }
 
@@ -55,11 +60,17 @@
                             }
                             $('.resp').append("Altura: " + resultado.height + "<br>");
                             $('.resp').append("Peso: " + resultado.weight + "<br>");
-                            image = new Image();
-                            image.src = resultado.sprites.front_default;
-                            image.onload = function() {
-                                $('.resp').append(image);
-                            };
+                            image = $('<img>', {
+                                src: resultado.sprites.front_default,
+                                click: function() {
+                                    window.location.href = 'compartir.html?id=' + resultado.id;
+
+                                }
+                            });
+
+                            $('.resp').append(image);
+                            $('.resp').append("<h3>Para compartir haga click sobre la imagen del pokemon </h3>");
+
 
                         }
 
@@ -91,16 +102,21 @@
                                     $.ajax({
                                         url: resultado.pokemon[j].pokemon.url,
                                         success: function(info) {
-                                            var imagen_pokemon = info;
-                                            image = new Image();
-                                            image.src = imagen_pokemon.sprites.front_default;
+                                            image = $('<img>', {
+                                                src: imagen_pokemon.sprites.front_default,
+                                                click: function() {
+                                                    window.location.href = 'compartir.html?id=' + imagen_pokemon.id;
+
+                                                }
+                                            });
+
                                             $('.resp').append(image);
 
                                         }
                                     });
 
                                 }
-
+                                $('.resp').append("<h3>Para compartir haga click sobre la imagen del pokemon </h3>");
                             }
 
                         }, 'json');
@@ -131,15 +147,21 @@
                                         url: resultado.pokemon[j].pokemon.url,
                                         success: function(info) {
                                             var imagen_pokemon = info;
-                                            image = new Image();
-                                            image.src = imagen_pokemon.sprites.front_default;
+                                            image = $('<img>', {
+                                                src: imagen_pokemon.sprites.front_default,
+                                                click: function() {
+                                                    window.location.href = 'compartir.html?id=' + imagen_pokemon.id;
+
+                                                }
+                                            });
+
                                             $('.resp').append(image);
 
                                         }
                                     });
 
                                 }
-
+                                $('.resp').append("<h3>Para compartir haga click sobre la imagen del pokemon </h3>");
                             }
 
                         }, 'json');
@@ -170,15 +192,21 @@
                                         url: resultado.pokemon[j].pokemon.url,
                                         success: function(info) {
                                             var imagen_pokemon = info;
-                                            image = new Image();
-                                            image.src = imagen_pokemon.sprites.front_default;
+                                            image = $('<img>', {
+                                                src: imagen_pokemon.sprites.front_default,
+                                                click: function() {
+                                                    window.location.href = 'compartir.html?id=' + imagen_pokemon.id;
+
+                                                }
+                                            });
+
                                             $('.resp').append(image);
 
                                         }
                                     });
 
                                 }
-
+                                $('.resp').append("<h3>Para compartir haga click sobre la imagen del pokemon </h3>");
                             }
 
                         }, 'json');
@@ -190,6 +218,7 @@
                             url: uri,
                             success: function(data) {
                                 var resultado = data;
+                                console.log(resultado);
                                 $('.resp').append("Recibe doble daño de pokemons de tipo:<br>");
                                 for (i = 0; i < resultado.damage_relations.double_damage_from.length; i++) {
                                     $('.resp').append((i + 1) + "-" + resultado.damage_relations.double_damage_from[i].name + "<br>");
@@ -209,35 +238,23 @@
                                         url: resultado.pokemon[j].pokemon.url,
                                         success: function(info) {
                                             var imagen_pokemon = info;
-                                            image = new Image();
-                                            image.src = imagen_pokemon.sprites.front_default;
+                                            image = $('<img>', {
+                                                src: imagen_pokemon.sprites.front_default,
+                                                click: function() {
+                                                    window.location.href = 'compartir.html?id=' + imagen_pokemon.id;
+
+                                                }
+                                            });
+
+
                                             $('.resp').append(image);
 
                                         }
                                     });
 
                                 }
-                                var boton_compartir = '<button id="boton_compartir" type="submit">Compartir</button>';
-                                $(boton_compartir).appendTo('.resp');
-                                $('#boton_compartir').click(function(e) {
-                                    var dats = $('.resp').val();
-                                    console.log(dats);
-                                    $.ajax({
-                                        type: "post",
-                                        url: "compartir.html",
+                                $('.resp').append("<h3>Para compartir haga click sobre la imagen del pokemon </h3>");
 
-                                        data: dats,
-                                        success: function(dats) {
-                                            $('.resp').html(dats);
-                                            window.location.href = 'compartir.html';
-
-
-                                        },
-                                        error: function(XMLHttpRequest, textStatus, errorThrown) {
-                                            console.log(errorThrown);
-                                        }
-                                    }, 'json');
-                                });
                             }
 
                         }, 'json');
@@ -263,16 +280,10 @@
                 });
 
 
-                //var input = '<input type="hidden" name="nasa_id" value="' + nasa_id + '">'
-                var boton2 = '<button class="btncompartir" type="submit">Compartir</button>';
-                //var form = '<form action="compartir.html" method="get">' + boton + '</form>';
-                $(boton2).appendTo('.historical');
-                $('.btncompartir').click(function(e) {
 
-                        window.location.href = 'compartir.html';
 
-                    })
-                    //$(form).appendTo('.resp');
+                var boton3 = '<button class="buscar_mas" type="submit">Buscar Mas</button>';
+
 
 
 
@@ -296,8 +307,8 @@
     <div class="header">
         <span>Ingrese la informacion a buscar</span>
     </div>
-    <div class="form">
-        <div class="formulario">
+    <div class="fondo">
+        <div>
             <input type="text" id="texto" name="buscar" />
             <select class="" name="busqueda" id="busqueda">
             <option id="id" value="id">ID de pokemon</option>
