@@ -13,7 +13,7 @@
     <script>
         $(document).ready(function(e) {
 
-            $('#submit').click(function(e) {
+            $('#buscar').click(function(e) {
                 $('.resp').empty();
                 $('.historical').empty();
                 if ($('#busqueda').val() == "id") {
@@ -102,6 +102,7 @@
                                     $.ajax({
                                         url: resultado.pokemon[j].pokemon.url,
                                         success: function(info) {
+                                            var imagen_pokemon = info;
                                             image = $('<img>', {
                                                 src: imagen_pokemon.sprites.front_default,
                                                 click: function() {
@@ -254,7 +255,7 @@
 
                                 }
                                 $('.resp').append("<h3>Para compartir haga click sobre la imagen del pokemon </h3>");
-
+                                $(boton3).show();
                             }
 
                         }, 'json');
@@ -279,23 +280,63 @@
                     $('.historial').show();
                 });
 
+                var boton_reset = '<button id="boton_reset" type="submit">Reset</button>';
+                $(boton_reset).appendTo('.historical');
 
+                $('#boton_reset').click(function(e) {
+                    $('.resp').empty();
+                    $('.buscar_mas').hide();
+                    $('.historial').hide();
+
+                });
+
+                console.log(uri);
 
 
                 var boton3 = '<button class="buscar_mas" type="submit">Buscar Mas</button>';
+                $(boton3).appendTo('.historical');
+                $('.buscar_mas').hide();
+
+                $('.buscar_mas').click(function(e) {
+                    $('.resp').empty();
+                    $(boton3).hide();
+                    $.ajax({
+                        url: uri,
+                        success: function(data) {
+                            var resultado = data;
+                            for (j = 0; j < 30; j++) {
+                                $('.resp').append((j + 1) + "-" + resultado.pokemon[j].pokemon.name + "<br>");
+                                $.ajax({
+                                    url: resultado.pokemon[j].pokemon.url,
+                                    success: function(info) {
+                                        var imagen_pokemon = info;
+                                        image = $('<img>', {
+                                            src: imagen_pokemon.sprites.front_default,
+                                            click: function() {
+                                                window.location.href = 'compartir.html?id=' + imagen_pokemon.id;
+
+                                            }
+                                        });
 
 
+                                        $('.resp').append(image);
 
+                                    }
+                                });
+
+                            }
+
+                        }
+
+                    });
+
+                });
 
             });
 
             $('#contacto').click(function(e) {
                 window.location.href = 'contacto.html';
             });
-
-
-
-
         });
     </script>
 
@@ -315,7 +356,7 @@
             <option id="tipo" value="tipo">Tipo</option>
             <option id="nombre" value="nombre">nombre</option>
         </select>
-            <input type="button" value="Buscar" id="submit" />
+            <input type="button" value="Buscar" id="buscar" />
         </div>
         <div class="resp">
 

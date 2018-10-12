@@ -31,12 +31,31 @@
                             $('.resp').append(image);
                         };
 
+                        $('#enviar').click(function(e) {
+                            var mailto = 'mailto:' + $('#email_dest').val();
+                            mailto += '?subject=Mira este pokemon ';
+                            var msg = '';
+                            if ($('#nombre').val() != "") {
+                                msg += $('#nombre').val();
+                            }
+                            msg += '&body=' + $('#email_rem').val() + ' te ha recomendado que veas esta informacion:';
+                            mailto += msg + "     nombre:    " + resultado.name + "      Altura:     " + resultado.height + "     peso:      " + resultado.weight + "    imagen:     " + resultado.sprites.front_default;
+
+                            window.location.assign(mailto);
+
+
+                        });
+
                     }
 
                 }, 'json');
             }
             $('#contacto').click(function(e) {
                 window.location.href = 'contacto.html';
+            });
+
+            $('#volver').click(function(e) {
+                window.location.href = 'buscar.html';
             });
 
         });
@@ -64,7 +83,8 @@
             Ingrese apellido: <input type="text" id="apellido" />
         </div>
         <div>
-            <input type="button" value="submit" id="enviar">
+            <input type="button" value="Enviar mail" id="enviar">
+            <input type="button" value="Volver a principal" id="volver">
         </div>
     </div>
     <div>
