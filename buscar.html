@@ -219,7 +219,7 @@
                             url: uri,
                             success: function(data) {
                                 var resultado = data;
-                                console.log(resultado);
+
                                 $('.resp').append("Recibe doble daño de pokemons de tipo:<br>");
                                 for (i = 0; i < resultado.damage_relations.double_damage_from.length; i++) {
                                     $('.resp').append((i + 1) + "-" + resultado.damage_relations.double_damage_from[i].name + "<br>");
@@ -290,7 +290,7 @@
 
                 });
 
-                console.log(uri);
+
 
 
                 var boton3 = '<button class="buscar_mas" type="submit">Buscar Mas</button>';
